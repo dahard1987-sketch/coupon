@@ -4,91 +4,65 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>면제권 A4</title>
-
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&display=swap');
-
-@font-face{
-  font-family:'Cafe24Ssurround';
-  font-weight:700;
-  font-style:normal;
-  src:url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/Cafe24Ssurround.woff') format('woff');
-}
-
-@font-face{
-  font-family:'SUIT';
-  font-weight:100 900;
-  font-style:normal;
-  src:url('https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/variable/woff2/SUIT-Variable.woff2') format('woff2-variations');
-}
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Caveat:wght@600;700&family=Gaegu:wght@400;700&display=swap');
 
 :root{
-  --key:#7ea9d7;
-  --key-deep:#4d6d93;
-  --key-main:#6f96c0;
-  --key-mid:#a8bfd8;
-  --key-soft:#d9e5f1;
-  --key-pale:#edf3f8;
-  --ink:#1a1c20;
-  --muted:#67707d;
-  --line:#d5dbe4;
+  --key:#9eb7d5;
+  --key-deep:#5d7191;
+  --key-main:#7f98b7;
+  --key-mid:#b7c9de;
+  --key-soft:#dfe8f2;
+  --key-pale:#eef3f7;
   --paper:#ffffff;
-  --screen:#f2f3f5;
+  --screen:#efefef;
+  --ink:#4f5670;
+  --stub-line:#8a95a8;
 }
 
 *{box-sizing:border-box}
-
 html,body{
   margin:0;
-  min-height:100%;
   background:var(--screen);
   color:var(--ink);
+  min-height:100%;
   -webkit-font-smoothing:antialiased;
   text-rendering:optimizeLegibility;
-  font-family:"SUIT","Apple SD Gothic Neo",sans-serif;
+  font-family:'Gaegu','Apple SD Gothic Neo',sans-serif;
 }
-
 body{min-height:100vh}
 
 .app{
-  max-width:1480px;
+  max-width:1360px;
   margin:0 auto;
-  padding:24px;
+  padding:20px;
   display:grid;
-  grid-template-columns:280px 1fr;
-  gap:24px;
+  grid-template-columns:270px 1fr;
+  gap:20px;
   align-items:start;
 }
 
 .panel{
   position:sticky;
-  top:24px;
+  top:20px;
   background:#fff;
-  border:1px solid #e4e8ef;
+  border:1px solid #e2e6ed;
   border-radius:14px;
   padding:16px;
   box-shadow:0 10px 28px rgba(0,0,0,.05);
 }
-
 .panel h1{
   margin:0 0 14px;
-  font-family:"Outfit",sans-serif;
-  font-size:15px;
-  font-weight:800;
-  letter-spacing:-.02em;
+  font:700 15px/1.2 'Baloo 2',sans-serif;
+  color:#4f5561;
 }
-
 .field{margin-bottom:12px}
-
 .field label{
   display:block;
   margin-bottom:6px;
-  font-family:"Outfit",sans-serif;
-  font-size:11px;
-  font-weight:800;
-  color:#68717d;
+  font:700 11px/1.2 'Baloo 2',sans-serif;
+  color:#6b7280;
 }
-
 .field input[type="text"]{
   width:100%;
   height:40px;
@@ -96,23 +70,19 @@ body{min-height:100vh}
   border:1px solid #d5dae2;
   border-radius:8px;
   background:#fff;
-  color:#1b1f25;
-  font:inherit;
-  font-size:14px;
+  color:#2c3140;
+  font:400 15px/1 'Gaegu',sans-serif;
   outline:none;
 }
-
 .field input[type="text"]:focus{
-  border-color:var(--key-mid);
-  box-shadow:0 0 0 3px rgba(126,169,215,.16);
+  border-color:var(--key-main);
+  box-shadow:0 0 0 3px rgba(120,145,180,.14);
 }
-
 .color-row{
   display:grid;
   grid-template-columns:1fr 46px;
   gap:8px;
 }
-
 .color-row input[type="color"]{
   width:46px;
   height:40px;
@@ -122,283 +92,251 @@ body{min-height:100vh}
   background:#fff;
   cursor:pointer;
 }
-
 .actions{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:8px;
   margin-top:16px;
 }
-
 button{
   height:40px;
   border:0;
   border-radius:8px;
   cursor:pointer;
-  font-family:"Outfit",sans-serif;
-  font-size:13px;
-  font-weight:800;
+  font:700 13px/1 'Baloo 2',sans-serif;
 }
-
-.reset{background:#eef1f4;color:#30343b}
+.reset{background:#eef1f4;color:#353b46}
 .print{background:var(--key-deep);color:#fff}
 
 .preview{overflow:auto;padding-bottom:20px}
-
 .sheet{
-  width:297mm;
-  height:210mm;
+  width:210mm;
+  height:297mm;
   padding:7mm;
   background:var(--paper);
   box-shadow:0 14px 40px rgba(0,0,0,.10);
 }
-
 .grid{
   width:100%;
   height:100%;
   display:grid;
   grid-template-columns:1fr 1fr;
-  grid-template-rows:repeat(3,1fr);
+  grid-template-rows:repeat(6,1fr);
   gap:0;
-  border:.35mm solid var(--line);
 }
 
 .coupon{
   position:relative;
-  display:grid;
-  grid-template-columns:31mm 1fr;
+  overflow:hidden;
   min-width:0;
-  background:#fff;
-  border-right:.35mm solid var(--line);
-  border-bottom:.35mm solid var(--line);
+  display:grid;
+  grid-template-columns:32mm 1fr;
+  background:linear-gradient(90deg, var(--key-soft) 0%, color-mix(in srgb,var(--key-soft) 56%, var(--key-pale)) 40%, var(--key-pale) 100%);
+  border-right:.28mm solid rgba(90,100,120,.22);
+  border-bottom:.28mm solid rgba(90,100,120,.22);
 }
-
-.coupon:nth-child(2n){border-right:none}
-.coupon:nth-last-child(-n+2){border-bottom:none}
+.coupon:nth-child(2n){border-right:0}
+.coupon:nth-last-child(-n+2){border-bottom:0}
 
 .stub{
   position:relative;
-  background:var(--key-soft);
-  border-right:.35mm dashed color-mix(in srgb, var(--key-deep) 52%, white);
+  background:linear-gradient(180deg, color-mix(in srgb,var(--key-mid) 86%, white) 0%, color-mix(in srgb,var(--key-main) 86%, white) 100%);
   display:flex;
   align-items:center;
   justify-content:center;
-  overflow:hidden;
 }
-
-.stub::before,
 .stub::after{
   content:"";
   position:absolute;
-  right:-2.2mm;
-  width:4.2mm;
-  height:4.2mm;
-  border-radius:50%;
-  background:#fff;
-  border:.35mm solid var(--line);
+  top:0;
+  bottom:0;
+  right:0;
+  border-right:.35mm dashed var(--stub-line);
 }
-
-.stub::before{top:-2.25mm}
-.stub::after{bottom:-2.25mm}
-
-.stub-text{
+.brand-vertical{
   writing-mode:vertical-rl;
   transform:rotate(180deg);
-  font-family:"Outfit",sans-serif;
-  font-size:11.2px;
-  font-weight:700;
-  letter-spacing:.20em;
+  font:700 11px/1 'Baloo 2',sans-serif;
+  letter-spacing:.08em;
   color:var(--key-deep);
-  text-transform:uppercase;
+  text-align:center;
+}
+.barcode{
+  position:absolute;
+  top:50%;
+  right:6.7mm;
+  width:8mm;
+  height:24mm;
+  transform:translateY(-50%);
+  opacity:.7;
+  background:repeating-linear-gradient(
+    180deg,
+    #414a58 0 .42mm,
+    transparent .42mm .9mm,
+    #414a58 .9mm 1.15mm,
+    transparent 1.15mm 1.55mm,
+    #414a58 1.55mm 2.25mm,
+    transparent 2.25mm 2.7mm
+  );
 }
 
 .body{
   position:relative;
+  padding:3.2mm 6.5mm 3mm;
   display:flex;
   flex-direction:column;
-  justify-content:space-between;
   align-items:center;
-  text-align:center;
-  padding:5.5mm 9mm 5.5mm;
+  justify-content:space-between;
+  min-width:0;
 }
-
+.header{
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:.7mm;
+}
 .topline{
   width:100%;
   display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:8px;
-  min-height:12px;
+  align-items:flex-start;
+  justify-content:center;
+  gap:2.5mm;
 }
-
-.topline-text{
-  font-family:"Outfit",sans-serif;
-  font-size:7.2px;
-  font-weight:600;
-  letter-spacing:.11em;
-  color:var(--key-main);
-  text-transform:uppercase;
+.top-text{
+  font:700 7.2mm/.95 'Caveat',cursive;
+  letter-spacing:.01em;
+  color:var(--key-deep);
   white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-  text-align:left;
-  flex:1;
 }
-
-.dot{
-  flex:none;
-  width:2.2mm;
-  height:2.2mm;
-  border-radius:50%;
-  background:var(--key-main);
+.heart{
+  font:700 3.6mm/1 'Caveat',cursive;
+  color:color-mix(in srgb,var(--key-deep) 76%, #73795f);
+  transform:translateY(.6mm);
 }
-
+.rule{
+  width:100%;
+  height:.38mm;
+  border-radius:999px;
+  background:color-mix(in srgb,var(--key-deep) 58%, #8d795d);
+  opacity:.76;
+}
 .center{
   flex:1;
+  width:100%;
   display:flex;
-  flex-direction:column;
   align-items:center;
   justify-content:center;
-  width:100%;
-  padding:2.5mm 0 1mm;
+  gap:2.8mm;
+  padding-top:.8mm;
 }
-
+.main-wrap{
+  flex:1;
+  min-width:0;
+  text-align:center;
+}
 .title{
   margin:0;
-  font-family:"Cafe24Ssurround","SUIT",sans-serif;
-  font-size:23.4px;
-  line-height:1.08;
-  font-weight:700;
-  letter-spacing:-.045em;
-  color:var(--key-deep);
-}
-
-.rule{
-  width:18mm;
-  height:.52mm;
-  margin:3.1mm 0 2.6mm;
-  border-radius:999px;
-  background:var(--key-main);
-}
-
-.note{
-  margin:0;
-  font-size:9.5px;
-  line-height:1.42;
-  font-weight:600;
-  letter-spacing:-.02em;
-  color:var(--muted);
-}
-
-.bottom{
-  width:100%;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:flex-end;
-  gap:1.4mm;
-  padding-top:2mm;
-}
-
-.brand{
-  font-family:"Cafe24Ssurround","SUIT",sans-serif;
-  font-size:11.4px;
-  line-height:1.1;
-  font-weight:700;
+  font:700 6.2mm/1.02 'Gaegu',sans-serif;
   letter-spacing:-.025em;
-  color:var(--key-deep);
+  color:color-mix(in srgb,var(--key-deep) 72%, #55447f);
 }
-
-.footnote{
-  font-size:8.8px;
-  line-height:1.32;
-  font-weight:500;
-  letter-spacing:-.015em;
-  color:var(--muted);
+.subbrand{
+  margin-top:1.1mm;
+  font:700 3.2mm/1 'Gaegu',sans-serif;
+  color:color-mix(in srgb,var(--key-deep) 82%, #5d557d);
+  letter-spacing:.045em;
 }
-
-@page{
-  size:A4 landscape;
-  margin:0;
+.note{
+  margin-top:.9mm;
+  font:400 2.65mm/1.12 'Gaegu',sans-serif;
+  color:color-mix(in srgb,var(--key-deep) 72%, #5e6278);
 }
+.pencils{
+  position:relative;
+  width:14mm;
+  height:14mm;
+  flex:none;
+}
+.pencil{
+  position:absolute;
+  width:3.6mm;
+  height:10.9mm;
+  border-radius:1.8mm;
+  background:linear-gradient(180deg,#e9a0b1 0 78%, #3d4350 78% 84%, #f2ead9 84% 100%);
+  box-shadow:inset 0 0 0 .22mm rgba(0,0,0,.04);
+}
+.pencil::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:1.5mm;
+  background:#c9bd69;
+  border-radius:1.8mm 1.8mm 0 0;
+}
+.pencil::after{
+  content:"";
+  position:absolute;
+  inset:1.7mm 1mm 2mm 1mm;
+  background:repeating-linear-gradient(180deg, rgba(255,255,255,.14) 0 .3mm, rgba(255,255,255,0) .3mm .8mm);
+}
+.pencil.one{right:5.6mm;top:.8mm;transform:rotate(25deg)}
+.pencil.two{right:.8mm;top:4.3mm;transform:rotate(33deg)}
 
+@page{size:A4 portrait;margin:0}
 @media (max-width:1100px){
-  .app{
-    grid-template-columns:1fr;
-    padding:16px;
-  }
+  .app{grid-template-columns:1fr;padding:16px}
   .panel{position:static}
 }
-
 @media print{
   html,body{
-    width:297mm;
-    height:210mm;
+    width:210mm;
+    height:297mm;
+    margin:0;
     background:#fff;
     -webkit-print-color-adjust:exact;
     print-color-adjust:exact;
-    margin:0;
   }
-
   .panel{display:none}
-  .app{
-    display:block;
-    max-width:none;
-    margin:0;
-    padding:0;
-  }
-  .preview{
-    overflow:visible;
-    padding:0;
-  }
-  .sheet{
-    width:297mm;
-    height:210mm;
-    margin:0;
-    box-shadow:none;
-  }
+  .app{display:block;max-width:none;margin:0;padding:0}
+  .preview{overflow:visible;padding:0}
+  .sheet{width:210mm;height:297mm;box-shadow:none;margin:0}
 }
 </style>
 </head>
-
 <body>
 <div class="app">
   <aside class="panel">
     <h1>편집</h1>
-
     <div class="field">
-      <label for="colorText">키 컬러</label>
+      <label for="keyColorText">키 컬러</label>
       <div class="color-row">
-        <input id="colorText" type="text" value="#7EA9D7">
-        <input id="colorInput" type="color" value="#7ea9d7">
+        <input id="keyColorText" type="text" value="#9EB7D5">
+        <input id="keyColor" type="color" value="#9eb7d5">
       </div>
     </div>
-
     <div class="field">
       <label for="text1">문구 1</label>
-      <input id="text1" type="text" value="RETEST PASS">
+      <input id="text1" type="text" value="CANB MIDDLE">
     </div>
-
     <div class="field">
       <label for="text2">문구 2</label>
-      <input id="text2" type="text" value="WORD TEST COUPON">
+      <input id="text2" type="text" value="Test Coupon">
     </div>
-
     <div class="field">
       <label for="text3">문구 3</label>
       <input id="text3" type="text" value="단어 재시 면제권">
     </div>
-
     <div class="field">
       <label for="text4">문구 4</label>
       <input id="text4" type="text" value="CANB 중등">
     </div>
-
     <div class="field">
       <label for="text5">문구 5</label>
-      <input id="text5" type="text" value="15점 이상일 때 사용 가능">
+      <input id="text5" type="text" value="[15점 이상일 때 사용 가능]">
     </div>
-
     <div class="actions">
       <button class="reset" id="resetBtn" type="button">초기화</button>
       <button class="print" type="button" onclick="window.print()">인쇄</button>
@@ -413,142 +351,114 @@ button{
 </div>
 
 <script>
-const defaults = {
-  color: "#7EA9D7",
-  text1: "RETEST PASS",
-  text2: "WORD TEST COUPON",
-  text3: "단어 재시 면제권",
-  text4: "CANB 중등",
-  text5: "15점 이상일 때 사용 가능"
+const defaults={
+  color:'#9EB7D5',
+  text1:'CANB MIDDLE',
+  text2:'Test Coupon',
+  text3:'단어 재시 면제권',
+  text4:'CANB 중등',
+  text5:'[15점 이상일 때 사용 가능]'
 };
 
-const $ = (id) => document.getElementById(id);
-const grid = $("grid");
+const $=id=>document.getElementById(id);
+const root=document.documentElement;
+const grid=$('grid');
 
 function esc(v){
-  return String(v).replace(/[&<>"']/g, c => ({
-    "&":"&amp;",
-    "<":"&lt;",
-    ">":"&gt;",
-    '"':"&quot;",
-    "'":"&#039;"
+  return String(v).replace(/[&<>"']/g,c=>({
+    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'
   }[c]));
 }
 
 function hexToHsl(hex){
-  hex = hex.replace('#','');
-  let r = parseInt(hex.substring(0,2),16)/255;
-  let g = parseInt(hex.substring(2,4),16)/255;
-  let b = parseInt(hex.substring(4,6),16)/255;
-
-  const max = Math.max(r,g,b), min = Math.min(r,g,b);
-  let h, s, l = (max + min) / 2;
-
-  if(max === min){
-    h = s = 0;
-  } else {
-    const d = max - min;
-    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+  const raw=hex.replace('#','');
+  let r=parseInt(raw.slice(0,2),16)/255;
+  let g=parseInt(raw.slice(2,4),16)/255;
+  let b=parseInt(raw.slice(4,6),16)/255;
+  const max=Math.max(r,g,b), min=Math.min(r,g,b);
+  let h=0,s=0,l=(max+min)/2;
+  if(max!==min){
+    const d=max-min;
+    s=l>0.5? d/(2-max-min): d/(max+min);
     switch(max){
-      case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-      case g: h = (b - r) / d + 2; break;
-      default: h = (r - g) / d + 4; break;
+      case r: h=(g-b)/d+(g<b?6:0); break;
+      case g: h=(b-r)/d+2; break;
+      default: h=(r-g)/d+4;
     }
-    h /= 6;
+    h/=6;
   }
-
-  return {
-    h: Math.round(h * 360),
-    s: Math.round(s * 100),
-    l: Math.round(l * 100)
-  };
+  return {h:h*360,s:s*100,l:l*100};
 }
 
 function hsl(h,s,l){
-  return `hsl(${h} ${s}% ${l}%)`;
+  return `hsl(${Math.round(h)} ${Math.max(0,Math.min(100,s)).toFixed(1)}% ${Math.max(0,Math.min(100,l)).toFixed(1)}%)`;
 }
 
-function applyTheme(hex){
-  const {h, s, l} = hexToHsl(hex);
-
-  const satMain = Math.max(24, Math.min(48, Math.round(s * 0.55)));
-  const satSoft = Math.max(16, Math.min(28, Math.round(s * 0.32)));
-  const satPale = Math.max(12, Math.min(20, Math.round(s * 0.20)));
-  const satDeep = Math.max(28, Math.min(42, Math.round(s * 0.48)));
-
-  document.documentElement.style.setProperty('--key', hex);
-  document.documentElement.style.setProperty('--key-deep', hsl(h, satDeep, 40));
-  document.documentElement.style.setProperty('--key-main', hsl(h, satMain, 58));
-  document.documentElement.style.setProperty('--key-mid', hsl(h, Math.max(18, Math.round(satMain * 0.75)), 76));
-  document.documentElement.style.setProperty('--key-soft', hsl(h, satSoft, 88));
-  document.documentElement.style.setProperty('--key-pale', hsl(h, satPale, 95));
+function applyPalette(hex){
+  const c=hexToHsl(hex);
+  const baseS=Math.min(30, Math.max(12, c.s*0.34));
+  root.style.setProperty('--key', hex);
+  root.style.setProperty('--key-deep', hsl(c.h, Math.max(18, baseS*1.2), 42));
+  root.style.setProperty('--key-main', hsl(c.h, Math.max(16, baseS), 62));
+  root.style.setProperty('--key-mid', hsl(c.h, Math.max(12, baseS*0.7), 79));
+  root.style.setProperty('--key-soft', hsl(c.h, Math.max(10, baseS*0.45), 89));
+  root.style.setProperty('--key-pale', hsl(c.h, Math.max(8, baseS*0.32), 94));
+  root.style.setProperty('--stub-line', hsl(c.h, Math.max(14, baseS*0.8), 56));
 }
 
 function render(){
-  const color = $("colorInput").value;
-  const text1 = $("text1").value;
-  const text2 = $("text2").value;
-  const text3 = $("text3").value;
-  const text4 = $("text4").value;
-  const text5 = $("text5").value;
-
-  applyTheme(color);
-
-  grid.innerHTML = Array.from({length:6}, () => `
+  const vals=[1,2,3,4,5].map(n=>$("text"+n).value);
+  grid.innerHTML=Array.from({length:12},()=>`
     <article class="coupon">
       <div class="stub">
-        <div class="stub-text">${esc(text1)}</div>
+        <div class="brand-vertical">${esc(vals[0])}</div>
+        <div class="barcode"></div>
       </div>
       <div class="body">
-        <div class="topline">
-          <div class="topline-text">${esc(text2)}</div>
-          <div class="dot"></div>
-        </div>
-
-        <div class="center">
-          <h2 class="title">${esc(text3)}</h2>
+        <div class="header">
+          <div class="topline">
+            <div class="top-text">${esc(vals[1])}</div>
+            <div class="heart">♡</div>
+          </div>
           <div class="rule"></div>
-          <p class="note">${esc(text5)}</p>
         </div>
-
-        <div class="bottom">
-          <div class="brand">${esc(text4)}</div>
+        <div class="center">
+          <div class="main-wrap">
+            <h2 class="title">${esc(vals[2])}</h2>
+            <div class="subbrand">${esc(vals[3])}</div>
+            <div class="note">${esc(vals[4])}</div>
+          </div>
+          <div class="pencils"><div class="pencil one"></div><div class="pencil two"></div></div>
         </div>
       </div>
     </article>
-  `).join("");
+  `).join('');
 }
 
-["text1","text2","text3","text4","text5"].forEach(id => {
-  $(id).addEventListener("input", render);
+[1,2,3,4,5].forEach(n=>$("text"+n).addEventListener('input',render));
+$("keyColor").addEventListener('input',e=>{
+  const v=e.target.value.toUpperCase();
+  $("keyColorText").value=v;
+  applyPalette(v);
 });
-
-$("colorInput").addEventListener("input", e => {
-  $("colorText").value = e.target.value.toUpperCase();
-  render();
-});
-
-$("colorText").addEventListener("change", e => {
-  const v = e.target.value.trim();
-  if(/^#[0-9A-Fa-f]{6}$/.test(v)){
-    $("colorInput").value = v;
-    render();
+$("keyColorText").addEventListener('change',e=>{
+  const v=e.target.value.trim();
+  if(/^#[0-9a-fA-F]{6}$/.test(v)){
+    $("keyColor").value=v;
+    $("keyColorText").value=v.toUpperCase();
+    applyPalette(v);
   }else{
-    e.target.value = $("colorInput").value.toUpperCase();
+    $("keyColorText").value=$("keyColor").value.toUpperCase();
   }
 });
-
-$("resetBtn").addEventListener("click", () => {
-  $("colorInput").value = defaults.color;
-  $("colorText").value = defaults.color;
-  $("text1").value = defaults.text1;
-  $("text2").value = defaults.text2;
-  $("text3").value = defaults.text3;
-  $("text4").value = defaults.text4;
-  $("text5").value = defaults.text5;
+$("resetBtn").addEventListener('click',()=>{
+  [1,2,3,4,5].forEach(n=>$("text"+n).value=defaults['text'+n]);
+  $("keyColor").value=defaults.color;
+  $("keyColorText").value=defaults.color;
+  applyPalette(defaults.color);
   render();
 });
-
+applyPalette(defaults.color);
 render();
 </script>
 </body>
