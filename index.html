@@ -2,74 +2,152 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>면제권 A4</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Fredoka:wght@500;600;700&family=Gamja+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Fredoka:wght@500;600&family=Gamja+Flower&display=swap');
 
 :root{
-  --deep:hsl(211 28% 42%);
-  --main:hsl(211 30% 63%);
-  --mid:hsl(211 24% 78%);
-  --soft:hsl(211 18% 88%);
-  --pale:hsl(211 14% 95%);
-  --ink:hsl(235 18% 34%);
-  --cut:#b7bcc5;
+  --key:#9eb7d5;
+  --key-deep:#5f7088;
+  --key-main:#879cb6;
+  --key-mid:#b9c8d8;
+  --key-soft:#dfe7ef;
+  --key-pale:#f1f4f7;
+  --ink:#4d5570;
+  --muted:#687184;
+  --line:#ccd4df;
   --paper:#fff;
   --screen:#eef0f3;
 }
-*{box-sizing:border-box}
-html,body{margin:0;min-height:100%;background:var(--screen);color:var(--ink);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-body{min-height:100vh;font-family:'Gamja Flower','Apple SD Gothic Neo',sans-serif}
 
-.app{max-width:1240px;margin:0 auto;padding:20px;display:grid;grid-template-columns:270px 1fr;gap:20px;align-items:start}
-.panel{position:sticky;top:20px;background:#fff;border:1px solid #e1e5eb;border-radius:14px;padding:16px;box-shadow:0 10px 30px rgba(0,0,0,.05)}
-.panel h1{margin:0 0 14px;font:700 16px/1 'Fredoka',sans-serif;color:#525866}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--screen);color:#222}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR","Apple SD Gothic Neo",Arial,sans-serif}
+
+.app{
+  max-width:1320px;
+  margin:0 auto;
+  padding:20px;
+  display:grid;
+  grid-template-columns:270px 1fr;
+  gap:20px;
+  align-items:start;
+}
+
+.panel{
+  position:sticky;
+  top:20px;
+  background:#fff;
+  border:1px solid #dde2e8;
+  border-radius:12px;
+  padding:16px;
+  box-shadow:0 8px 24px rgba(0,0,0,.05);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR","Apple SD Gothic Neo",Arial,sans-serif;
+}
+.panel h1{margin:0 0 14px;font-size:15px;font-weight:700;color:#232832;letter-spacing:-.02em}
 .field{margin-bottom:12px}
-.field label{display:block;margin-bottom:6px;font:600 12px/1 'Fredoka','Gamja Flower',sans-serif;color:#6b7280}
-.field input[type="text"]{width:100%;height:40px;padding:0 11px;border:1px solid #d6dbe3;border-radius:8px;background:#fff;color:#2d3340;font:400 16px/1 'Gamja Flower',sans-serif;outline:none}
-.field input[type="text"]:focus{border-color:var(--main);box-shadow:0 0 0 3px color-mix(in srgb,var(--pale) 85%,transparent)}
+.field label{display:block;margin-bottom:6px;font-size:12px;font-weight:700;color:#5f6672}
+.field input[type="text"]{
+  width:100%;height:40px;padding:0 11px;border:1px solid #d3d8df;border-radius:8px;background:#fff;
+  color:#20242b;font:400 14px/1.2 -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR","Apple SD Gothic Neo",Arial,sans-serif;outline:none
+}
+.field input[type="text"]:focus{border-color:#9aa9bc;box-shadow:0 0 0 3px rgba(95,112,136,.10)}
 .color-row{display:grid;grid-template-columns:1fr 46px;gap:8px}
-.color-row input[type="color"]{width:46px;height:40px;padding:3px;border:1px solid #d6dbe3;border-radius:8px;background:#fff;cursor:pointer}
+.color-row input[type="color"]{width:46px;height:40px;padding:3px;border:1px solid #d3d8df;border-radius:8px;background:#fff;cursor:pointer}
 .actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:16px}
-button{height:40px;border:0;border-radius:8px;cursor:pointer;font:600 13px/1 'Fredoka',sans-serif}
-.reset{background:#eef1f4;color:#3b414d}.print{background:var(--deep);color:#fff}
+button{height:40px;border:0;border-radius:8px;cursor:pointer;font:700 13px/1 -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR","Apple SD Gothic Neo",Arial,sans-serif}
+.reset{background:#eef1f4;color:#30353d}.print{background:#2d333b;color:#fff}
 
 .preview{overflow:auto;padding-bottom:20px}
 .sheet{width:210mm;height:297mm;padding:6mm;background:var(--paper);box-shadow:0 14px 40px rgba(0,0,0,.10)}
-.grid{width:100%;height:100%;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(6,1fr);gap:0;border:.22mm solid var(--cut)}
+.grid{
+  width:100%;height:100%;display:grid;
+  grid-template-columns:1fr 1fr;
+  grid-template-rows:repeat(7,1fr);
+  gap:0;
+  border:.28mm solid var(--line);
+}
 
-.coupon{position:relative;min-width:0;min-height:0;display:grid;grid-template-columns:29mm 1fr;background:linear-gradient(90deg,var(--soft) 0%,color-mix(in srgb,var(--soft) 72%,var(--pale)) 40%,var(--pale) 100%);border-right:.22mm solid var(--cut);border-bottom:.22mm solid var(--cut);overflow:hidden}
-.coupon:nth-child(2n){border-right:0}.coupon:nth-last-child(-n+2){border-bottom:0}
+.coupon{
+  position:relative;
+  min-width:0;
+  overflow:hidden;
+  display:grid;
+  grid-template-columns:25mm 1fr;
+  background:linear-gradient(90deg,var(--key-soft) 0%,var(--key-pale) 64%,#fff 100%);
+  border-right:.28mm solid var(--line);
+  border-bottom:.28mm solid var(--line);
+}
+.coupon:nth-child(2n){border-right:none}
+.coupon:nth-last-child(-n+2){border-bottom:none}
 
-.stub{position:relative;min-width:0;background:linear-gradient(180deg,color-mix(in srgb,var(--mid) 86%,white) 0%,color-mix(in srgb,var(--main) 55%,white) 100%)}
-.stub::after{content:"";position:absolute;top:0;right:0;bottom:0;border-right:.3mm dashed color-mix(in srgb,var(--deep) 62%,#777)}
-.stub-brand{position:absolute;left:5.3mm;top:50%;transform:translate(-50%,-50%) rotate(-90deg);transform-origin:center;white-space:nowrap;font:600 4.2mm/1 'Fredoka',sans-serif;letter-spacing:.045em;color:var(--deep)}
-.barcode{position:absolute;top:50%;right:5.2mm;transform:translateY(-50%);width:5.4mm;height:22mm;opacity:.62;background:repeating-linear-gradient(180deg,#394150 0 .34mm,transparent .34mm .76mm,#394150 .76mm 1.02mm,transparent 1.02mm 1.42mm,#394150 1.42mm 2.05mm,transparent 2.05mm 2.5mm)}
+.stub{
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(180deg,var(--key-mid),color-mix(in srgb,var(--key-main) 72%,white));
+  border-right:.30mm dashed color-mix(in srgb,var(--key-deep) 58%,white);
+}
+.stub::before,.stub::after{
+  content:"";position:absolute;left:50%;transform:translateX(-50%);width:2.2mm;height:2.2mm;border-radius:50%;
+  border:.35mm solid color-mix(in srgb,var(--key-deep) 70%,white);opacity:.85
+}
+.stub::before{top:5mm}.stub::after{bottom:5mm}
+.brand-vertical{
+  writing-mode:vertical-rl;transform:rotate(180deg);
+  font-family:'Fredoka',sans-serif;
+  font-size:4.6mm;font-weight:600;line-height:1;letter-spacing:.045em;color:var(--key-deep);
+  white-space:nowrap
+}
 
-.body{position:relative;min-width:0;min-height:0;padding:3.2mm 5.2mm 3mm;display:grid;grid-template-rows:auto 1fr auto;align-items:center}
-.header{width:100%;min-width:0}
-.header-row{position:relative;height:9.5mm;display:flex;align-items:center;justify-content:center;padding:0 7mm}
-.test-coupon{max-width:100%;white-space:nowrap;overflow:visible;font:700 7.3mm/.92 'Caveat',cursive;color:var(--deep);letter-spacing:.005em}
-.heart{position:absolute;right:1.2mm;top:50%;transform:translateY(-52%) rotate(-5deg);font:700 4.8mm/1 'Caveat',cursive;color:color-mix(in srgb,var(--deep) 76%,#7a795f)}
-.header-line{height:.36mm;width:100%;background:color-mix(in srgb,var(--deep) 58%,#8e806f);opacity:.85}
+.body{
+  min-width:0;
+  display:grid;
+  grid-template-rows:auto 1fr auto;
+  align-items:center;
+  padding:2.2mm 5.2mm 2.2mm 5.6mm;
+  color:var(--ink);
+}
+.header{width:100%;display:flex;flex-direction:column;align-items:center;gap:.3mm;min-width:0}
+.topline{width:100%;display:flex;align-items:center;justify-content:center;gap:2mm;min-width:0}
+.top-text{
+  font-family:'Caveat',cursive;
+  font-size:6.6mm;font-weight:700;line-height:.95;color:var(--key-deep);
+  white-space:nowrap;overflow:visible
+}
+.heart{font-family:'Caveat',cursive;font-size:3.5mm;line-height:1;color:var(--key-deep);transform:translateY(.2mm)}
+.rule{width:76%;height:.32mm;border-radius:999px;background:color-mix(in srgb,var(--key-deep) 70%,#8f7d65);opacity:.68}
 
-.center{position:relative;min-width:0;display:flex;align-items:center;justify-content:center;padding:1.8mm 12mm 0 1mm;text-align:center}
-.copy{min-width:0}
-.title{margin:0;white-space:nowrap;font:400 6.3mm/1.15 'Gamja Flower',sans-serif;letter-spacing:-.02em;color:color-mix(in srgb,var(--deep) 78%,#584a83)}
-.brand{margin-top:1.25mm;font:600 2.65mm/1 'Fredoka','Gamja Flower',sans-serif;letter-spacing:.08em;color:var(--deep)}
-.note{margin-top:.95mm;white-space:nowrap;font:400 2.55mm/1.15 'Gamja Flower',sans-serif;color:color-mix(in srgb,var(--deep) 78%,#5f6474)}
+.center{
+  width:100%;min-width:0;
+  display:flex;align-items:center;justify-content:center;
+  padding:.6mm 0 .2mm;
+}
+.main-wrap{width:100%;min-width:0;text-align:center}
+.title{
+  margin:0;
+  font-family:'Gamja Flower',cursive;
+  font-size:5.7mm;font-weight:400;line-height:1;color:#5b4b89;
+  letter-spacing:-.015em;
+  white-space:nowrap;
+}
 
-.pencils{position:absolute;right:0;bottom:1mm;width:11.5mm;height:14mm;transform:rotate(1deg)}
-.pencil{position:absolute;width:3.1mm;height:10.8mm;border-radius:1.4mm;background:linear-gradient(180deg,#d7c66c 0 13%,#e886a8 13% 78%,#f2dfca 78% 91%,#343a46 91% 100%);box-shadow:inset 0 0 0 .18mm rgba(0,0,0,.04)}
-.pencil::after{content:"";position:absolute;left:.68mm;right:.68mm;top:2.2mm;bottom:2.6mm;background:linear-gradient(90deg,rgba(255,255,255,.25),rgba(255,255,255,0),rgba(255,255,255,.17));border-radius:999px}
-.pencil.one{right:4.9mm;top:.2mm;transform:rotate(25deg)}
-.pencil.two{right:.6mm;top:4mm;transform:rotate(34deg)}
-
-.footer{height:2mm}
+.bottom{width:100%;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:.45mm;min-width:0}
+.subbrand{
+  font-family:'Fredoka','Gamja Flower',sans-serif;
+  font-size:2.55mm;font-weight:600;line-height:1;color:#5e668d;letter-spacing:.08em;
+  white-space:nowrap
+}
+.note{
+  font-family:'Gamja Flower',cursive;
+  font-size:2.5mm;font-weight:400;line-height:1.05;color:#5e668d;
+  white-space:nowrap
+}
 
 @page{size:A4 portrait;margin:0}
-@media(max-width:950px){.app{grid-template-columns:1fr;padding:14px}.panel{position:static}}
+@media(max-width:1000px){.app{grid-template-columns:1fr;padding:14px}.panel{position:static}}
 @media print{
   html,body{width:210mm;height:297mm;margin:0;background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .panel{display:none}.app{display:block;max-width:none;margin:0;padding:0}.preview{overflow:visible;padding:0}.sheet{width:210mm;height:297mm;margin:0;box-shadow:none}
@@ -79,29 +157,75 @@ button{height:40px;border:0;border-radius:8px;cursor:pointer;font:600 13px/1 'Fr
 <body>
 <div class="app">
   <aside class="panel">
-    <h1>Coupon Editor</h1>
-    <div class="field"><label for="colorText">키 컬러</label><div class="color-row"><input id="colorText" type="text" value="#7EA9D7"><input id="colorInput" type="color" value="#7ea9d7"></div></div>
+    <h1>면제권 편집</h1>
+
+    <div class="field">
+      <label for="keyColorText">키 컬러</label>
+      <div class="color-row">
+        <input id="keyColorText" type="text" value="#9EB7D5">
+        <input id="keyColor" type="color" value="#9eb7d5">
+      </div>
+    </div>
+
     <div class="field"><label for="text1">문구 1</label><input id="text1" type="text" value="CANB MIDDLE"></div>
     <div class="field"><label for="text2">문구 2</label><input id="text2" type="text" value="Test Coupon"></div>
     <div class="field"><label for="text3">문구 3</label><input id="text3" type="text" value="단어 재시 면제권"></div>
     <div class="field"><label for="text4">문구 4</label><input id="text4" type="text" value="CANB 중등"></div>
     <div class="field"><label for="text5">문구 5</label><input id="text5" type="text" value="[15점 이상일 때 사용 가능]"></div>
-    <div class="actions"><button class="reset" id="resetBtn" type="button">초기화</button><button class="print" type="button" onclick="window.print()">인쇄</button></div>
+
+    <div class="actions">
+      <button class="reset" id="resetBtn" type="button">초기화</button>
+      <button class="print" type="button" onclick="window.print()">인쇄</button>
+    </div>
   </aside>
-  <main class="preview"><section class="sheet"><div class="grid" id="grid"></div></section></main>
+
+  <main class="preview">
+    <section class="sheet"><div class="grid" id="grid"></div></section>
+  </main>
 </div>
+
 <script>
-const defaults={color:'#7EA9D7',text1:'CANB MIDDLE',text2:'Test Coupon',text3:'단어 재시 면제권',text4:'CANB 중등',text5:'[15점 이상일 때 사용 가능]'};
-const $=id=>document.getElementById(id);const root=document.documentElement;const grid=$('grid');
-function esc(v){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));}
-function hexToHsl(hex){const raw=hex.replace('#','');let r=parseInt(raw.slice(0,2),16)/255,g=parseInt(raw.slice(2,4),16)/255,b=parseInt(raw.slice(4,6),16)/255;const max=Math.max(r,g,b),min=Math.min(r,g,b);let h=0,s=0,l=(max+min)/2;if(max!==min){const d=max-min;s=l>.5?d/(2-max-min):d/(max+min);if(max===r)h=(g-b)/d+(g<b?6:0);else if(max===g)h=(b-r)/d+2;else h=(r-g)/d+4;h/=6;}return{h:h*360,s:s*100,l:l*100};}
-function hsl(h,s,l){return `hsl(${Math.round(h)} ${Math.round(s)}% ${Math.round(l)}%)`;}
-function applyPalette(hex){const c=hexToHsl(hex);const muted=Math.min(30,Math.max(16,c.s*.32));root.style.setProperty('--deep',hsl(c.h,Math.max(22,muted*1.05),42));root.style.setProperty('--main',hsl(c.h,Math.max(20,muted),63));root.style.setProperty('--mid',hsl(c.h,Math.max(16,muted*.72),78));root.style.setProperty('--soft',hsl(c.h,Math.max(12,muted*.50),88));root.style.setProperty('--pale',hsl(c.h,Math.max(9,muted*.38),95));}
-function render(){const v=[1,2,3,4,5].map(n=>$('text'+n).value);grid.innerHTML=Array.from({length:12},()=>`<article class="coupon"><div class="stub"><div class="stub-brand">${esc(v[0])}</div><div class="barcode"></div></div><div class="body"><div class="header"><div class="header-row"><div class="test-coupon">${esc(v[1])}</div><div class="heart">♡</div></div><div class="header-line"></div></div><div class="center"><div class="copy"><h2 class="title">${esc(v[2])}</h2><div class="brand">${esc(v[3])}</div><div class="note">${esc(v[4])}</div></div><div class="pencils"><div class="pencil one"></div><div class="pencil two"></div></div></div><div class="footer"></div></div></article>`).join('');}
+const defaults={color:'#9EB7D5',text1:'CANB MIDDLE',text2:'Test Coupon',text3:'단어 재시 면제권',text4:'CANB 중등',text5:'[15점 이상일 때 사용 가능]'};
+const $=id=>document.getElementById(id);
+const root=document.documentElement;
+const grid=$('grid');
+
+function esc(v){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]))}
+function hexToHsl(hex){
+  const raw=hex.replace('#','');let r=parseInt(raw.slice(0,2),16)/255,g=parseInt(raw.slice(2,4),16)/255,b=parseInt(raw.slice(4,6),16)/255;
+  const max=Math.max(r,g,b),min=Math.min(r,g,b);let h=0,s=0,l=(max+min)/2;
+  if(max!==min){const d=max-min;s=l>.5?d/(2-max-min):d/(max+min);if(max===r)h=(g-b)/d+(g<b?6:0);else if(max===g)h=(b-r)/d+2;else h=(r-g)/d+4;h/=6}
+  return{h:h*360,s:s*100,l:l*100}
+}
+function hsl(h,s,l){return `hsl(${Math.round(h)} ${Math.max(0,Math.min(100,s)).toFixed(1)}% ${Math.max(0,Math.min(100,l)).toFixed(1)}%)`}
+function applyPalette(hex){
+  const c=hexToHsl(hex);const baseS=Math.min(28,Math.max(10,c.s*.30));
+  root.style.setProperty('--key',hex);
+  root.style.setProperty('--key-deep',hsl(c.h,Math.max(16,baseS*1.2),43));
+  root.style.setProperty('--key-main',hsl(c.h,Math.max(14,baseS),63));
+  root.style.setProperty('--key-mid',hsl(c.h,Math.max(11,baseS*.72),79));
+  root.style.setProperty('--key-soft',hsl(c.h,Math.max(8,baseS*.48),89));
+  root.style.setProperty('--key-pale',hsl(c.h,Math.max(6,baseS*.34),95));
+}
+function render(){
+  const v=[1,2,3,4,5].map(n=>$('text'+n).value);
+  grid.innerHTML=Array.from({length:14},()=>`
+    <article class="coupon">
+      <div class="stub"><div class="brand-vertical">${esc(v[0])}</div></div>
+      <div class="body">
+        <div class="header">
+          <div class="topline"><div class="top-text">${esc(v[1])}</div><div class="heart">♡</div></div>
+          <div class="rule"></div>
+        </div>
+        <div class="center"><div class="main-wrap"><h2 class="title">${esc(v[2])}</h2></div></div>
+        <div class="bottom"><div class="subbrand">${esc(v[3])}</div><div class="note">${esc(v[4])}</div></div>
+      </div>
+    </article>`).join('');
+}
 [1,2,3,4,5].forEach(n=>$('text'+n).addEventListener('input',render));
-$('colorInput').addEventListener('input',e=>{const v=e.target.value.toUpperCase();$('colorText').value=v;applyPalette(v);});
-$('colorText').addEventListener('change',e=>{const v=e.target.value.trim();if(/^#[0-9a-fA-F]{6}$/.test(v)){$('colorInput').value=v;$('colorText').value=v.toUpperCase();applyPalette(v);}else $('colorText').value=$('colorInput').value.toUpperCase();});
-$('resetBtn').addEventListener('click',()=>{[1,2,3,4,5].forEach(n=>$('text'+n).value=defaults['text'+n]);$('colorInput').value=defaults.color;$('colorText').value=defaults.color;applyPalette(defaults.color);render();});
+$('keyColor').addEventListener('input',e=>{const v=e.target.value.toUpperCase();$('keyColorText').value=v;applyPalette(v)});
+$('keyColorText').addEventListener('change',e=>{const v=e.target.value.trim();if(/^#[0-9a-fA-F]{6}$/.test(v)){$('keyColor').value=v;$('keyColorText').value=v.toUpperCase();applyPalette(v)}else{$('keyColorText').value=$('keyColor').value.toUpperCase()}});
+$('resetBtn').addEventListener('click',()=>{[1,2,3,4,5].forEach(n=>$('text'+n).value=defaults['text'+n]);$('keyColor').value=defaults.color;$('keyColorText').value=defaults.color;applyPalette(defaults.color);render()});
 applyPalette(defaults.color);render();
 </script>
 </body>
