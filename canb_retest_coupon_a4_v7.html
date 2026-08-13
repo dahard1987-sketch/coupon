@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>면제권 A4</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap');
+
+@font-face{
+  font-family:'Gmarket Sans';
+  font-weight:500;
+  font-style:normal;
+  src:url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+}
+@font-face{
+  font-family:'Gmarket Sans';
+  font-weight:700;
+  font-style:normal;
+  src:url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+}
+
+:root{
+  --ink:#17191d;
+  --muted:#626975;
+  --line:#d9dee6;
+  --soft:#f6f8fb;
+  --paper:#ffffff;
+  --screen:#f3f4f6;
+  --accent:#5f6776;
+}
+
+*{box-sizing:border-box}
+
+html,body{
+  margin:0;
+  background:var(--screen);
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  font-family:"Gmarket Sans","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+}
+
+body{min-height:100vh}
+
+.app{
+  max-width:1480px;
+  margin:0 auto;
+  padding:24px;
+  display:grid;
+  grid-template-columns:260px 1fr;
+  gap:24px;
+  align-items:start;
+}
+
+.panel{
+  position:sticky;
+  top:24px;
+  background:#fff;
+  border:1px solid #e4e8ef;
+  border-radius:14px;
+  padding:16px;
+  box-shadow:0 10px 28px rgba(0,0,0,.05);
+}
+
+.panel h1{
+  margin:0 0 14px;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:15px;
+  font-weight:700;
+  letter-spacing:-.02em;
+}
+
+.field{margin-bottom:12px}
+
+.field label{
+  display:block;
+  margin-bottom:6px;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:11px;
+  font-weight:700;
+  color:#676f7b;
+}
+
+.field input[type="text"]{
+  width:100%;
+  height:40px;
+  padding:0 11px;
+  border:1px solid #d5dae2;
+  border-radius:8px;
+  background:#fff;
+  color:#1b1f25;
+  font:inherit;
+  font-size:14px;
+  outline:none;
+}
+
+.field input[type="text"]:focus{
+  border-color:#a9b1bc;
+  box-shadow:0 0 0 3px rgba(17,24,39,.05);
+}
+
+.actions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-top:16px;
+}
+
+button{
+  height:40px;
+  border:0;
+  border-radius:8px;
+  cursor:pointer;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:13px;
+  font-weight:700;
+}
+
+.reset{background:#eef1f4;color:#30343b}
+.print{background:#17191d;color:#fff}
+
+.preview{overflow:auto;padding-bottom:20px}
+
+.sheet{
+  width:297mm;
+  height:210mm;
+  padding:7mm;
+  background:var(--paper);
+  box-shadow:0 14px 40px rgba(0,0,0,.10);
+}
+
+.grid{
+  width:100%;
+  height:100%;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  grid-template-rows:repeat(3,1fr);
+  gap:0;
+  border:.35mm solid var(--line);
+}
+
+.coupon{
+  position:relative;
+  display:grid;
+  grid-template-columns:31mm 1fr;
+  min-width:0;
+  background:#fff;
+  border-right:.35mm solid var(--line);
+  border-bottom:.35mm solid var(--line);
+}
+
+.coupon:nth-child(2n){border-right:none}
+.coupon:nth-last-child(-n+2){border-bottom:none}
+
+.stub{
+  position:relative;
+  background:var(--soft);
+  border-right:.35mm dashed #bcc3cd;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+.stub::before,
+.stub::after{
+  content:"";
+  position:absolute;
+  right:-2.2mm;
+  width:4.2mm;
+  height:4.2mm;
+  border-radius:50%;
+  background:#fff;
+  border:.35mm solid var(--line);
+}
+
+.stub::before{top:-2.25mm}
+.stub::after{bottom:-2.25mm}
+
+.stub-text{
+  writing-mode:vertical-rl;
+  transform:rotate(180deg);
+  font-family:"Space Grotesk",sans-serif;
+  font-size:11.5px;
+  font-weight:700;
+  letter-spacing:.28em;
+  color:var(--accent);
+  text-transform:uppercase;
+}
+
+.body{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:7mm 9mm;
+}
+
+.topline{
+  position:absolute;
+  top:5mm;
+  left:7mm;
+  right:12mm;
+  text-align:left;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:7.2px;
+  font-weight:700;
+  letter-spacing:.22em;
+  color:#8d95a1;
+  text-transform:uppercase;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.dot{
+  position:absolute;
+  top:5mm;
+  right:6mm;
+  width:2.2mm;
+  height:2.2mm;
+  border-radius:50%;
+  background:var(--accent);
+  opacity:.92;
+}
+
+.title{
+  margin:0;
+  font-family:"Gmarket Sans","Apple SD Gothic Neo",sans-serif;
+  font-size:22.5px;
+  line-height:1.12;
+  font-weight:700;
+  letter-spacing:-.04em;
+  color:var(--ink);
+}
+
+.rule{
+  width:18mm;
+  height:.5mm;
+  margin:3.2mm 0 2.8mm;
+  border-radius:999px;
+  background:var(--accent);
+}
+
+.note{
+  margin:0;
+  font-family:"Gmarket Sans","Apple SD Gothic Neo",sans-serif;
+  font-size:9.8px;
+  line-height:1.35;
+  font-weight:500;
+  letter-spacing:-.01em;
+  color:var(--muted);
+}
+
+@page{
+  size:A4 landscape;
+  margin:0;
+}
+
+@media (max-width:1100px){
+  .app{
+    grid-template-columns:1fr;
+    padding:16px;
+  }
+  .panel{position:static}
+}
+
+@media print{
+  html,body{
+    width:297mm;
+    height:210mm;
+    background:#fff;
+    -webkit-print-color-adjust:exact;
+    print-color-adjust:exact;
+  }
+
+  .panel{display:none}
+  .app{
+    display:block;
+    max-width:none;
+    margin:0;
+    padding:0;
+  }
+  .preview{
+    overflow:visible;
+    padding:0;
+  }
+  .sheet{
+    width:297mm;
+    height:210mm;
+    margin:0;
+    box-shadow:none;
+  }
+}
+</style>
+<script type="text/javascript" nonce="3c9510884e5848b5a1705034e2d" src="//local.adguard.org?ts=1786582933605&amp;type=content-script&amp;dmn=chatgpt.com&amp;url=https%3A%2F%2Fchatgpt.com%2Fbackend-api%2Festuary%2Fcontent%3Fid%3Dfile_00000000126481f9a48b2a9e656e7922%26ts%3D496274%26p%3Dfs%26cid%3D1%26sig%3D5bc351821be19599fcfad0c5c31ee2eed56684a5e6bfbd451b179964a97037fb%26v%3D0&amp;app=com.google.Chrome&amp;css=2&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1&amp;stealth=1&amp;st-push&amp;st-loc&amp;st-dnt&amp;st-1pcttl=4320"></script><script type="text/javascript" nonce="3c9510884e5848b5a1705034e2d" src="//local.adguard.org?ts=1786582933605&amp;name=AdGuard%20Extra&amp;type=user-script"></script></head>
+
+<body>
+<div class="app">
+  <aside class="panel">
+    <h1>편집</h1>
+
+    <div class="field">
+      <label for="text1">문구 1</label>
+      <input id="text1" type="text" value="RETEST PASS">
+    </div>
+
+    <div class="field">
+      <label for="text2">문구 2</label>
+      <input id="text2" type="text" value="WORD TEST COUPON">
+    </div>
+
+    <div class="field">
+      <label for="text3">문구 3</label>
+      <input id="text3" type="text" value="단어 재시 면제권">
+    </div>
+
+    <div class="field">
+      <label for="text4">문구 4</label>
+      <input id="text4" type="text" value="15점 이상일 때 사용 가능">
+    </div>
+
+    <div class="actions">
+      <button class="reset" id="resetBtn" type="button">초기화</button>
+      <button class="print" type="button" onclick="window.print()">인쇄</button>
+    </div>
+  </aside>
+
+  <main class="preview">
+    <section class="sheet">
+      <div class="grid" id="grid"></div>
+    </section>
+  </main>
+</div>
+
+<script>
+const defaults = {
+  text1: "RETEST PASS",
+  text2: "WORD TEST COUPON",
+  text3: "단어 재시 면제권",
+  text4: "15점 이상일 때 사용 가능"
+};
+
+const $ = (id) => document.getElementById(id);
+const grid = $("grid");
+
+function esc(v){
+  return String(v).replace(/[&<>"']/g, c => ({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#039;"
+  }[c]));
+}
+
+function render(){
+  const text1 = $("text1").value;
+  const text2 = $("text2").value;
+  const text3 = $("text3").value;
+  const text4 = $("text4").value;
+
+  grid.innerHTML = Array.from({length:6}, () => `
+    <article class="coupon">
+      <div class="stub">
+        <div class="stub-text">${esc(text1)}</div>
+      </div>
+      <div class="body">
+        <div class="topline">${esc(text2)}</div>
+        <div class="dot"></div>
+        <h2 class="title">${esc(text3)}</h2>
+        <div class="rule"></div>
+        <p class="note">${esc(text4)}</p>
+      </div>
+    </article>
+  `).join("");
+}
+
+["text1","text2","text3","text4"].forEach(id => {
+  $(id).addEventListener("input", render);
+});
+
+$("resetBtn").addEventListener("click", () => {
+  Object.entries(defaults).forEach(([k,v]) => $(k).value = v);
+  render();
+});
+
+render();
+</script>
+</body>
+</html>
