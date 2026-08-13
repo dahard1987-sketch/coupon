@@ -6,40 +6,32 @@
 <title>면제권 A4</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap');
-
-@font-face{
-  font-family:'Gmarket Sans';
-  font-weight:500;
-  font-style:normal;
-  src:url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
-}
-@font-face{
-  font-family:'Gmarket Sans';
-  font-weight:700;
-  font-style:normal;
-  src:url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
-}
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Do+Hyeon&family=Gowun+Dodum&display=swap');
 
 :root{
+  --key:#6558d3;
+  --key-deep:#42369f;
+  --key-main:#6558d3;
+  --key-mid:#8e84df;
+  --key-soft:#dedaf5;
+  --key-pale:#f4f2fc;
   --ink:#17191d;
-  --muted:#626975;
+  --muted:#666d78;
   --line:#d9dee6;
-  --soft:#f6f8fb;
-  --paper:#ffffff;
+  --paper:#fff;
   --screen:#f3f4f6;
-  --accent:#5f6776;
 }
 
 *{box-sizing:border-box}
 
 html,body{
   margin:0;
+  min-height:100%;
   background:var(--screen);
   color:var(--ink);
   -webkit-font-smoothing:antialiased;
   text-rendering:optimizeLegibility;
-  font-family:"Gmarket Sans","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  font-family:"Gowun Dodum","Apple SD Gothic Neo",sans-serif;
 }
 
 body{min-height:100vh}
@@ -49,7 +41,7 @@ body{min-height:100vh}
   margin:0 auto;
   padding:24px;
   display:grid;
-  grid-template-columns:260px 1fr;
+  grid-template-columns:270px 1fr;
   gap:24px;
   align-items:start;
 }
@@ -66,7 +58,7 @@ body{min-height:100vh}
 
 .panel h1{
   margin:0 0 14px;
-  font-family:"Space Grotesk",sans-serif;
+  font-family:"Bricolage Grotesque",sans-serif;
   font-size:15px;
   font-weight:700;
   letter-spacing:-.02em;
@@ -77,10 +69,9 @@ body{min-height:100vh}
 .field label{
   display:block;
   margin-bottom:6px;
-  font-family:"Space Grotesk",sans-serif;
   font-size:11px;
   font-weight:700;
-  color:#676f7b;
+  color:#69717d;
 }
 
 .field input[type="text"]{
@@ -97,8 +88,24 @@ body{min-height:100vh}
 }
 
 .field input[type="text"]:focus{
-  border-color:#a9b1bc;
-  box-shadow:0 0 0 3px rgba(17,24,39,.05);
+  border-color:var(--key-mid);
+  box-shadow:0 0 0 3px var(--key-pale);
+}
+
+.color-row{
+  display:grid;
+  grid-template-columns:1fr 46px;
+  gap:8px;
+}
+
+.color-row input[type="color"]{
+  width:46px;
+  height:40px;
+  padding:3px;
+  border:1px solid #d5dae2;
+  border-radius:8px;
+  background:#fff;
+  cursor:pointer;
 }
 
 .actions{
@@ -113,13 +120,13 @@ button{
   border:0;
   border-radius:8px;
   cursor:pointer;
-  font-family:"Space Grotesk",sans-serif;
+  font-family:"Gowun Dodum",sans-serif;
   font-size:13px;
   font-weight:700;
 }
 
 .reset{background:#eef1f4;color:#30343b}
-.print{background:#17191d;color:#fff}
+.print{background:var(--key-deep);color:#fff}
 
 .preview{overflow:auto;padding-bottom:20px}
 
@@ -156,8 +163,8 @@ button{
 
 .stub{
   position:relative;
-  background:var(--soft);
-  border-right:.35mm dashed #bcc3cd;
+  background:var(--key-pale);
+  border-right:.35mm dashed var(--key-mid);
   display:flex;
   align-items:center;
   justify-content:center;
@@ -182,11 +189,11 @@ button{
 .stub-text{
   writing-mode:vertical-rl;
   transform:rotate(180deg);
-  font-family:"Space Grotesk",sans-serif;
+  font-family:"Bricolage Grotesque",sans-serif;
   font-size:11.5px;
   font-weight:700;
-  letter-spacing:.28em;
-  color:var(--accent);
+  letter-spacing:.25em;
+  color:var(--key-deep);
   text-transform:uppercase;
 }
 
@@ -200,17 +207,27 @@ button{
   padding:7mm 9mm;
 }
 
+.brand{
+  position:absolute;
+  top:4.7mm;
+  left:7mm;
+  font-family:"Do Hyeon",sans-serif;
+  font-size:8.6px;
+  letter-spacing:.015em;
+  color:var(--key-deep);
+}
+
 .topline{
   position:absolute;
   top:5mm;
-  left:7mm;
   right:12mm;
-  text-align:left;
-  font-family:"Space Grotesk",sans-serif;
-  font-size:7.2px;
+  max-width:62mm;
+  text-align:right;
+  font-family:"Bricolage Grotesque",sans-serif;
+  font-size:7px;
   font-weight:700;
-  letter-spacing:.22em;
-  color:#8d95a1;
+  letter-spacing:.18em;
+  color:var(--key-mid);
   text-transform:uppercase;
   white-space:nowrap;
   overflow:hidden;
@@ -219,40 +236,39 @@ button{
 
 .dot{
   position:absolute;
-  top:5mm;
+  top:5.1mm;
   right:6mm;
   width:2.2mm;
   height:2.2mm;
   border-radius:50%;
-  background:var(--accent);
-  opacity:.92;
+  background:var(--key-main);
 }
 
 .title{
   margin:0;
-  font-family:"Gmarket Sans","Apple SD Gothic Neo",sans-serif;
-  font-size:22.5px;
-  line-height:1.12;
-  font-weight:700;
-  letter-spacing:-.04em;
-  color:var(--ink);
+  font-family:"Do Hyeon","Apple SD Gothic Neo",sans-serif;
+  font-size:24px;
+  line-height:1.08;
+  font-weight:400;
+  letter-spacing:-.035em;
+  color:var(--key-deep);
 }
 
 .rule{
-  width:18mm;
-  height:.5mm;
-  margin:3.2mm 0 2.8mm;
+  width:19mm;
+  height:.55mm;
+  margin:3.1mm 0 2.6mm;
   border-radius:999px;
-  background:var(--accent);
+  background:var(--key-main);
 }
 
 .note{
   margin:0;
-  font-family:"Gmarket Sans","Apple SD Gothic Neo",sans-serif;
-  font-size:9.8px;
-  line-height:1.35;
-  font-weight:500;
-  letter-spacing:-.01em;
+  font-family:"Gowun Dodum","Apple SD Gothic Neo",sans-serif;
+  font-size:9.5px;
+  line-height:1.4;
+  font-weight:400;
+  letter-spacing:-.015em;
   color:var(--muted);
 }
 
@@ -261,11 +277,8 @@ button{
   margin:0;
 }
 
-@media (max-width:1100px){
-  .app{
-    grid-template-columns:1fr;
-    padding:16px;
-  }
+@media(max-width:1100px){
+  .app{grid-template-columns:1fr;padding:16px}
   .panel{position:static}
 }
 
@@ -279,49 +292,48 @@ button{
   }
 
   .panel{display:none}
-  .app{
-    display:block;
-    max-width:none;
-    margin:0;
-    padding:0;
-  }
-  .preview{
-    overflow:visible;
-    padding:0;
-  }
-  .sheet{
-    width:297mm;
-    height:210mm;
-    margin:0;
-    box-shadow:none;
-  }
+  .app{display:block;max-width:none;margin:0;padding:0}
+  .preview{overflow:visible;padding:0}
+  .sheet{width:297mm;height:210mm;margin:0;box-shadow:none}
 }
 </style>
-<script type="text/javascript" nonce="3c9510884e5848b5a1705034e2d" src="//local.adguard.org?ts=1786582933605&amp;type=content-script&amp;dmn=chatgpt.com&amp;url=https%3A%2F%2Fchatgpt.com%2Fbackend-api%2Festuary%2Fcontent%3Fid%3Dfile_00000000126481f9a48b2a9e656e7922%26ts%3D496274%26p%3Dfs%26cid%3D1%26sig%3D5bc351821be19599fcfad0c5c31ee2eed56684a5e6bfbd451b179964a97037fb%26v%3D0&amp;app=com.google.Chrome&amp;css=2&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1&amp;stealth=1&amp;st-push&amp;st-loc&amp;st-dnt&amp;st-1pcttl=4320"></script><script type="text/javascript" nonce="3c9510884e5848b5a1705034e2d" src="//local.adguard.org?ts=1786582933605&amp;name=AdGuard%20Extra&amp;type=user-script"></script></head>
-
+</head>
 <body>
 <div class="app">
   <aside class="panel">
-    <h1>편집</h1>
+    <h1>Coupon Editor</h1>
 
     <div class="field">
       <label for="text1">문구 1</label>
-      <input id="text1" type="text" value="RETEST PASS">
+      <input id="text1" type="text" value="CANB 중등">
     </div>
 
     <div class="field">
       <label for="text2">문구 2</label>
-      <input id="text2" type="text" value="WORD TEST COUPON">
+      <input id="text2" type="text" value="RETEST PASS">
     </div>
 
     <div class="field">
       <label for="text3">문구 3</label>
-      <input id="text3" type="text" value="단어 재시 면제권">
+      <input id="text3" type="text" value="WORD TEST COUPON">
     </div>
 
     <div class="field">
       <label for="text4">문구 4</label>
-      <input id="text4" type="text" value="15점 이상일 때 사용 가능">
+      <input id="text4" type="text" value="단어 재시 면제권">
+    </div>
+
+    <div class="field">
+      <label for="text5">문구 5</label>
+      <input id="text5" type="text" value="15점 이상일 때 사용 가능">
+    </div>
+
+    <div class="field">
+      <label for="keyColorText">키 컬러</label>
+      <div class="color-row">
+        <input id="keyColorText" type="text" value="#6558D3">
+        <input id="keyColor" type="color" value="#6558d3">
+      </div>
     </div>
 
     <div class="actions">
@@ -338,57 +350,105 @@ button{
 </div>
 
 <script>
-const defaults = {
-  text1: "RETEST PASS",
-  text2: "WORD TEST COUPON",
-  text3: "단어 재시 면제권",
-  text4: "15점 이상일 때 사용 가능"
+const defaults={
+  text1:"CANB 중등",
+  text2:"RETEST PASS",
+  text3:"WORD TEST COUPON",
+  text4:"단어 재시 면제권",
+  text5:"15점 이상일 때 사용 가능",
+  color:"#6558D3"
 };
 
-const $ = (id) => document.getElementById(id);
-const grid = $("grid");
+const $=id=>document.getElementById(id);
+const root=document.documentElement;
+const grid=$("grid");
 
 function esc(v){
-  return String(v).replace(/[&<>"']/g, c => ({
-    "&":"&amp;",
-    "<":"&lt;",
-    ">":"&gt;",
-    '"':"&quot;",
-    "'":"&#039;"
+  return String(v).replace(/[&<>"']/g,c=>({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
   }[c]));
 }
 
-function render(){
-  const text1 = $("text1").value;
-  const text2 = $("text2").value;
-  const text3 = $("text3").value;
-  const text4 = $("text4").value;
+function hexToHsl(hex){
+  const raw=hex.replace("#","");
+  const r=parseInt(raw.slice(0,2),16)/255;
+  const g=parseInt(raw.slice(2,4),16)/255;
+  const b=parseInt(raw.slice(4,6),16)/255;
+  const max=Math.max(r,g,b),min=Math.min(r,g,b);
+  let h=0,s=0;
+  const l=(max+min)/2;
+  if(max!==min){
+    const d=max-min;
+    s=l>.5?d/(2-max-min):d/(max+min);
+    if(max===r)h=(g-b)/d+(g<b?6:0);
+    else if(max===g)h=(b-r)/d+2;
+    else h=(r-g)/d+4;
+    h/=6;
+  }
+  return {h:h*360,s:s*100,l:l*100};
+}
 
-  grid.innerHTML = Array.from({length:6}, () => `
+function hsl(h,s,l){
+  return `hsl(${Math.round(h)} ${Math.max(0,Math.min(100,s)).toFixed(1)}% ${Math.max(0,Math.min(100,l)).toFixed(1)}%)`;
+}
+
+function applyPalette(hex){
+  const c=hexToHsl(hex);
+  root.style.setProperty("--key",hex);
+  root.style.setProperty("--key-deep",hsl(c.h,Math.max(30,c.s*.82),Math.max(24,c.l*.58)));
+  root.style.setProperty("--key-main",hsl(c.h,Math.max(40,c.s*.95),Math.min(58,c.l)));
+  root.style.setProperty("--key-mid",hsl(c.h,Math.max(28,c.s*.58),Math.min(72,c.l+18)));
+  root.style.setProperty("--key-soft",hsl(c.h,Math.max(18,c.s*.30),91));
+  root.style.setProperty("--key-pale",hsl(c.h,Math.max(12,c.s*.20),97));
+}
+
+function render(){
+  const v=[1,2,3,4,5].map(n=>$("text"+n).value);
+  grid.innerHTML=Array.from({length:6},()=>`
     <article class="coupon">
       <div class="stub">
-        <div class="stub-text">${esc(text1)}</div>
+        <div class="stub-text">${esc(v[1])}</div>
       </div>
       <div class="body">
-        <div class="topline">${esc(text2)}</div>
+        <div class="brand">${esc(v[0])}</div>
+        <div class="topline">${esc(v[2])}</div>
         <div class="dot"></div>
-        <h2 class="title">${esc(text3)}</h2>
+        <h2 class="title">${esc(v[3])}</h2>
         <div class="rule"></div>
-        <p class="note">${esc(text4)}</p>
+        <p class="note">${esc(v[4])}</p>
       </div>
     </article>
   `).join("");
 }
 
-["text1","text2","text3","text4"].forEach(id => {
-  $(id).addEventListener("input", render);
+[1,2,3,4,5].forEach(n=>$("text"+n).addEventListener("input",render));
+
+$("keyColor").addEventListener("input",e=>{
+  const value=e.target.value.toUpperCase();
+  $("keyColorText").value=value;
+  applyPalette(value);
 });
 
-$("resetBtn").addEventListener("click", () => {
-  Object.entries(defaults).forEach(([k,v]) => $(k).value = v);
+$("keyColorText").addEventListener("change",e=>{
+  const value=e.target.value.trim();
+  if(/^#[0-9a-fA-F]{6}$/.test(value)){
+    $("keyColor").value=value;
+    e.target.value=value.toUpperCase();
+    applyPalette(value);
+  }else{
+    e.target.value=$("keyColor").value.toUpperCase();
+  }
+});
+
+$("resetBtn").addEventListener("click",()=>{
+  [1,2,3,4,5].forEach(n=>$("text"+n).value=defaults["text"+n]);
+  $("keyColor").value=defaults.color;
+  $("keyColorText").value=defaults.color;
+  applyPalette(defaults.color);
   render();
 });
 
+applyPalette(defaults.color);
 render();
 </script>
 </body>
